@@ -45,4 +45,66 @@ from auta;
 Ułóż zdania o wszystkich autach wg wzoru:
 Jan Kowalski ma samochód marki Polonez, który ma 24 lata i kosztuje 345 EUR
 
-select concat(w_imie, " ", w_nazwisko, " ma samochód marki ", marka, ", który ma ", 2025 - rok, " lata i kosztuje ", round(cena/3.87, 0), " EUR") as "Zdanka" from auta;
+select concat(w_imie, " ", w_nazwisko, " ma samochód marki ", marka, ", który ma ", 2025 - rok, " lata i kosztuje ", round(cena/3.87, 0), " EUR.") as "Zdanka" from auta;
+
+Case 
+    when condition1 then result1
+    when condition2 then result2
+    when condidionN then resultN
+    else result3
+END;
+
+Select imie, nazwisko, wiek,
+Case
+    when wiek < 30 then "Młodszy deweloper"
+    when wiek > 30 then "Starszy deweloper"
+    else "Deweloper ma 30 lat"
+END
+From pracownicy;
+
+8. 1- Marka pojazdu
+    2- Spalanie
+    3- spala powyżej 6 litrów - spala duzo
+        spala poniej 6 litrów - spala mało
+        spala 6 litrów - spala idealnie
+
+Select marka, spalanie,
+Case
+    when spalanie > 8 then "Spala dużo"
+    when spalanie < 8 then "Spala mało"
+    else "Spala idealnie"
+END
+as "Kalkulator spalania"
+From auta;
+
+Wyświetl dane w dwóch kolumnach:
+1- Polonez ma 15 lat
+2- imię i nawisko właściciela
+SELECT 
+    CONCAT(marka, ' ma ', 2025 - rok, ' ',
+        CASE 
+            WHEN (2025 - rok) = 1 THEN 'rok'
+            WHEN (2025 - rok) BETWEEN 2 AND 4 OR (2025 - rok) % 10 BETWEEN 2 AND 4 AND (2025 - rok) % 100 NOT BETWEEN 12 AND 14 THEN 'lata'
+            ELSE 'lat'
+        END) AS "Wiek auta",
+    CONCAT(w_imie, ' ', w_nazwisko) AS "Właściciel"
+FROM auta;
+
+Pokaz w tabeli:
+
+Marka   Spalanie    Eko Info
+Mercedes  5   spala poniej 8l
+Polonez 10 spala od 8 do 10l
+mazda 12 spala powyzej 10l
+fiat 10 spala 10l
+
+SELECT 
+    marka,
+    spalanie,
+    CASE
+        WHEN spalanie < 8 THEN 'Spala poniej 8l'
+        WHEN spalanie BETWEEN 8 AND 10 THEN 'Spala od 8 do 10l'
+        WHEN spalanie > 10 THEN 'Spala powyzej 10l'
+    END AS "Eko Info"
+FROM auta;
+
