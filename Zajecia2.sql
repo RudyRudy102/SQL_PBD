@@ -43,7 +43,6 @@ from auta;
 
 
 Ułóż zdania o wszystkich autach wg wzoru:
-
 Jan Kowalski ma samochód marki Polonez, który ma 24 lata i kosztuje 345 EUR
 
 select concat(w_imie, " ", w_nazwisko, " ma samochód marki ", marka, ", który ma ", 2025 - rok, " lata i kosztuje ", round(cena/3.87, 0), " EUR") as "Zdanka" from auta;
