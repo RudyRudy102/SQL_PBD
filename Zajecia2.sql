@@ -108,3 +108,29 @@ SELECT
     END AS "Eko Info"
 FROM auta;
 
+W tabeli zmieniamy by Mazda w 3 rekordzie spalała 8 i pół litra
+
+UPDATE auta
+SET spalanie = 8.5
+WHERE id = 3;
+
+
+ALTER TABLE auta MODIFY COLUMN spalanie varchar(10);
+ALTER TABLE auta MODIFY COLUMN spalanie FLOAT(10);
+
+
+Ułóz zdania o wszystkich rekordach zawierające:
+
+Inforację o imieniu i nazwisku właściciela, który kupił auto jakiejś marki
+
+SELECT 
+    CONCAT(w_imie, ' ', w_nazwisko) AS "Właściciel",
+    CONCAT(
+        CASE 
+            WHEN RIGHT(w_imie, 1) = 'a' THEN 'kupiła auto marki '
+            ELSE "kupił auto marki '
+        END,
+        marka
+    ) as "nazwa samochodu"
+FROM auta;
+
