@@ -97,6 +97,7 @@ ALTER TABLE warzywniak MODIFY kwota_brutto VARCHAR(255);
 
 UPDATE warzywniak 
 SET kwota_brutto = CONCAT(kwota_brutto, ' zł');
+select * from warzywniak;
 
 UPDATE warzywniak 
 SET data_dostawy = '2024-01-24' 
@@ -110,3 +111,13 @@ Marchew
 vat 138zl
 
 insert into warzywniak values (0, "Marchew", "Polcargo", 60, 10, 10, "Pomarańczowy", "Europa", "RR RR 1/22", 738, '2024-01-24');
+
+ALTER TABLE warzywniak 
+MODIFY cena VARCHAR(255),
+MODIFY waga VARCHAR(255),
+MODIFY kwota_brutto VARCHAR(255);
+
+UPDATE warzywniak 
+SET cena = CONCAT(cena, ' zł'),
+    waga = CONCAT(waga, ' kg'),
+    kwota_brutto = CONCAT(kwota_brutto, ' zł');
