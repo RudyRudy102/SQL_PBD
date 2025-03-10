@@ -68,23 +68,18 @@ SET numer_faktury = (@numer_faktury := @numer_faktury + 1),
 13 select nazwa, ilosc, cena, round(cena/4.8, 2) as cena_eur, round(cena/3.62, 2) as cena_usd from warzywniak;
 14 select nazwa, ilosc, cena, round(cena/4.8, 2) as cena_eur, round(cena/3.62, 2) as cena_usd from warzywniak;
 15 select nazwa, data_dostawy, datediff(now(), data_dostawy) as ile_dni from warzywniak;
-16 select nazwa, data_dostawy, case 
-    when dayname(data_dostawy) = 'Monday' then 'Poniedziałek'
-    when dayname(data_dostawy) = 'Tuesday' then 'Wtorek'
-    when dayname(data_dostawy) = 'Wednesday' then 'Środa'
-    when dayname(data_dostawy) = 'Thursday' then 'Czwartek'
-    when dayname(data_dostawy) = 'Friday' then 'Piątek'
-    when dayname(data_dostawy) = 'Saturday' then 'Sobota'
-    when dayname(data_dostawy) = 'Sunday' then 'Niedziela'
-    else 'Nieznany'
-END as dzien_tygodnia from warzywniak where dayname(data_dostawy) != 'Sunday';
+17 SELECT nazwa, 
+       DAYNAME(data_dostawy) AS dzien_tygodnia
+FROM warzywniak
+WHERE DAYOFWEEK(data_dostawy) != 1;
 
-17 select nazwa, data_dostawy, case 
-    when dayname(data_dostawy) = 'Monday' then 'Poniedziałek'
-    when dayname(data_dostawy) = 'Wednesday' then 'Środa'
-    when dayname(data_dostawy) = 'Friday' then 'Piątek'
-    else 'Nieznany'
-END as dzien_tygodnia from warzywniak where dayname(data_dostawy) != 'Sunday';
+
+
+17 SELECT nazwa AS Produkt, 
+       data_dostawy AS Data, 
+       DAYNAME(data_dostawy) AS 'Dzień tygodnia'
+FROM warzywniak
+WHERE DAYOFWEEK(data_dostawy) IN (2, 4, 6);
 
 19 update warzywniak set cena = 12.32 where nazwa = "Papryka";
 select nazwa, cena, kolor, kontynent from warzywniak where nazwa = "Papryka";
@@ -105,7 +100,7 @@ WHERE id = '12';
 
 cena brutto 738
 faktura RR RR 1/22
-Marchew
+Marchewet 
 10 kg
 60zl netto
 vat 138zl
