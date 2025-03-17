@@ -73,10 +73,10 @@ SET numer_faktury = (@numer_faktury := @numer_faktury + 1),
 FROM warzywniak
 WHERE DAYOFWEEK(data_dostawy) != 1;
 
-
+set lc_time_names = 'pl_PL';
+set lc_time_names = 'fr_FR';
 
 17 SELECT nazwa AS Produkt, 
-       data_dostawy AS Data, 
        DAYNAME(data_dostawy) AS 'Dzień tygodnia'
 FROM warzywniak
 WHERE DAYOFWEEK(data_dostawy) IN (2, 4, 6);
@@ -86,7 +86,7 @@ select nazwa, cena, kolor, kontynent from warzywniak where nazwa = "Papryka";
 
 20 select nazwa, cena, kontynent, waga from warzywniak order by cena desc;
 21 select nazwa, cena, kontynent, waga from warzywniak order by waga asc;
-22 select avg(cena) from warzywniak;
+22 select round(avg(cena), 2) as srednia_cena from warzywniak;
 
 ALTER TABLE warzywniak MODIFY kwota_brutto VARCHAR(255);
 
