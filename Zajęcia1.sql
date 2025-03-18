@@ -96,3 +96,16 @@ insert into osoby values
 ("0", "Kowalski", "Jan", "1997")
 
 ;
+
+UPDATE auta SET kolor = 'czerwony' WHERE id = 1;
+UPDATE auta SET kolor = 'zielony' WHERE id = 2;
+UPDATE auta SET kolor = 'niebieski' WHERE id = 3;
+UPDATE auta SET kolor = 'czarny' WHERE id = 4;
+UPDATE auta SET kolor = 'srebrny' WHERE id = 5;
+UPDATE auta SET kolor = 'biały' WHERE id = 6;
+UPDATE auta SET kolor = 'biały' WHERE id = 7;
+UPDATE auta SET kolor = 'biały' WHERE id = 8;
+UPDATE auta SET kolor = 'biały' WHERE id = 9;
+UPDATE auta SET kolor = 'biały' WHERE id = 10;
+UPDATE auta SET kolor = 'zielony' WHERE id = 11;
+UPDATE auta SET kolor = 'niebieski' WHERE id = 12;
