@@ -284,3 +284,25 @@ WHERE oceny.oliczba >=3
 GROUP BY studenci.studentID, studenci.Snazwisko, studenci.Simie;
 
 
+14. Wybierz jednego studenta. Wyświetl w dowolnym układzie jakie przedmioty zaliczył, jakie dostał oceny i kiedy oraz tę ocenę wystawił.
+
+SELECT 
+    CONCAT(studenci.Snazwisko, ' ', studenci.Simie) AS "Nazwisko i imię studenta",
+    przedmioty.Pnazwa AS "Przedmiot",
+    oceny.Onazwa AS "Ocena",
+    DATE(dziennik.Ddata) AS "Data wystawienia oceny"
+FROM studenci
+JOIN dziennik ON studenci.studentID = dziennik.studentID
+JOIN przedmioty ON dziennik.przedmiotID = przedmioty.przedmiotID
+JOIN oceny ON dziennik.ocenaID = oceny.ocenaID
+WHERE studenci.Sindeks = 45687;
+
+SELECT 
+    CONCAT(studenci.Snazwisko, ' ', studenci.Simie) AS "Nazwisko i imię studenta",
+    przedmioty.Pnazwa AS "Przedmiot",
+    oceny.Onazwa AS "Ocena",
+    DATE(dziennik.Ddata) AS "Data wystawienia oceny"
+FROM studenci
+JOIN dziennik ON studenci.studentID = dziennik.studentID
+JOIN przedmioty ON dziennik.przedmiotID = przedmioty.przedmiotID
+JOIN oceny ON dziennik.ocenaID = oceny.ocenaID;
