@@ -281,7 +281,8 @@ FROM studenci
 JOIN dziennik ON studenci.studentID = dziennik.studentID
 JOIN oceny ON dziennik.ocenaID = oceny.ocenaID
 WHERE oceny.oliczba >=3
-GROUP BY studenci.studentID, studenci.Snazwisko, studenci.Simie;
+GROUP BY studenci.studentID, studenci.Snazwisko, studenci.Simie
+ORDER BY COUNT(DISTINCT dziennik.przedmiotID) DESC;
 
 
 14. Wybierz jednego studenta. Wyświetl w dowolnym układzie jakie przedmioty zaliczył, jakie dostał oceny i kiedy oraz tę ocenę wystawił.
