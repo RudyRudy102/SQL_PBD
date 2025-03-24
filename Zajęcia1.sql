@@ -93,9 +93,7 @@ show columns from psy;
 
 insert into osoby values
 
-("0", "Kowalski", "Jan", "1997")
-
-;
+("0", "Kowalski", "Jan", "1997");
 
 UPDATE auta SET kolor = 'czerwony' WHERE id = 1;
 UPDATE auta SET kolor = 'zielony' WHERE id = 2;
